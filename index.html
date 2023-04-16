@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Data</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experiences">Experiences</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p>Grade 12 Cookery / Bread & Pastry</p>
+                <h1>Hi, I'm <span>Brent</span><br>Aleck M. Capco</h1>
+            </div>
+        </div>
+    </div>
+
+    <!--------about--------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/user.png">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>To become part on an industry where I can apply the knowledge I’ve learned from school and able to acquire experiences that will serve as my stepping stone towards success.</p>
+                    
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('extra-curricular')">Extra-Curricular</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Job and Task</span><br>• Recipe Design<br>• Food Regulations<br>• Kitchen Management<br>• Food Preparation<br>• Kitchen Assistant</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="extra-curricular">
+                        <ul>
+                            <li><span>Marketing Team, 2019 - 2021, Promoter</span><br>Promoting products of a company in different people.</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2022 - current</span><br>Mayor Simplicio Manalo National High School<br>Cookery / Bread & Pastry</li>
+                            <li><span>2020 – 2021</span><br>Pateros National High School(SHS)<br>Cookery</li>
+                            <li><span>2015 – 2019</span><br>Pateros National High School<br>Junior High School Diploma</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--------Experiences-------->
+    <div id="experiences">
+        <div class="container">
+            <h1 class="sub-title">My Experiences</h1>
+            <div class="services-list">
+                <div>
+                    <h2>Buy & Sell</h2>
+                    <p>2019-2021, Buyer & Seller<br><li>Buy & Seller of bike for a long period of time which where I improved my communication skills in term of talking to other people.</li></p>
+                </div>
+                <div>
+                    <h2>Maya.Comm</h2>
+                    <p>2022, Service & Dishwasher<br><li>Serving food and orders of the customers. Washer of dishes and maintaining cleanliness in the company.</li></p>
+                </div>
+                <div>
+                    <h2>Perfect Events Story Cafe</h2>
+                    <p>2023, OJT<br><li>Cooking and Serving food to the customers.</li></p>
+                </div>
+            </div>
+            <a href="#" class="btn">See More</a>
+        </div>
+    </div>
+
+    <!------contact------->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p>brentcapco@gmail.com</p>
+                    <p>0994-645-5784</p>
+                    <div class="social-media">
+                        <a href="https://facebook.com/brentaleck.capco">facebook</a>
+                        <a href="https://instagram.com/brentcapco">instagram</a>
+                    </div>
+                    <a href="images/my-cv.pdf" download class="btn btn2">Download Resume</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var tablinks=document.getElementsByClassName("tab-links");
+        var tabcontents=document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+
+    </script>
+
+    <script>
+        var sidemeu = document.getElementById("sidemenu");
+        function openmenu(){
+            sidemeu.style.right="0";
+        }
+        function closemenu(){
+            sidemeu.style.right="-200px";
+        }
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwTkwEmO8fNGNgGHEQCqZfsJvkY2yA5VvWXLCHmCXVElompUKvOfAOvcg4dbaqewotL/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+    
+</body>
+</html>
